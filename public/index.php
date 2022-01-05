@@ -1,3 +1,16 @@
+<?php
+$connect = mysqli_connect('127.0.0.1', 'root', '', 'wypozyczalnia');
+$sql4 = "SELECT * FROM gry;";
+                    $pyt4 = mysqli_query($connect, $sql4);
+                    echo "<select name=idklient>";
+                        while($row4 = mysqli_fetch_array($pyt4)) {
+                                echo "<option value=$row4[0]>";
+                                echo $row4[1]." ".$row4[2]."<br>";
+                                echo "</option>";
+                            }
+                    echo "</select><br>";
+
+?>
 <html>
     <head>
         <link rel="stylesheet" href="style.css">
