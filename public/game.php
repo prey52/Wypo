@@ -1,15 +1,22 @@
 <?php
-$connect = mysqli_connect('127.0.0.1', 'root', '', 'wypozyczalnia');
+    $connect = mysqli_connect('127.0.0.1', 'root', '', 'wypozyczalnia');
+    $test = $_POST['game_name'];
+    $query_game = "select * from gry where id_gry=$test";
+    $sql_game = mysqli_query($connect, $query_game);
+    $game = mysqli_fetch_array($sql_game);
+    //echo $game[0],$game[1],$game[2],$game[3],$game[4];
+    $game_wallpaper = 'data:image/jpeg;base64,'.base64_encode($game[5]);
 ?>
 <html>
-    <head>
-        <title>Wypożyczalnia</title>
+<head>
+    <?php
+        echo "<title>WYPO: $game[1]</title>";
+    ?>
         <link rel="stylesheet" href="style.css">
         <link rel="icon" type="image/png" href="resources/favicon.png">
     </head>
-
     <body>
-        <header>
+    <header>
             <div class="lheader">
                 <p>O nas</p>
             </div>
@@ -34,24 +41,5 @@ $connect = mysqli_connect('127.0.0.1', 'root', '', 'wypozyczalnia');
             <input type="submit" class="search-category" value="Sportowe">
             <div class="vl"></div>
         </div>
-        <h1>Polecamy</h1>
-<?php
-    echo "<div class=productions>";
-    $query_game = "select * from gry";
-    $sql_game = mysqli_query($connect, $query_game);
-    while($row_game = mysqli_fetch_array($sql_game))
-    {
-        echo "<div class=$row_game[1]>";
-        echo "<p class=gametitle>$row_game[1]</p>";
-        echo "<p>$row_game[2]</p>";
-        echo" <form method=post action=game.php target=_blank>
-                <input type=hidden  name=game_name value=$row_game[0]>
-                <input type=submit class=submit_game value=Zamów>
-              </form>";
-        echo "</div>";
-        //echo '<img src="data:image/jpeg;base64,'.base64_encode( $row_game[5] ).'"/>';
-    }
-    echo "</div>";
-?>
     </body>
 </html>

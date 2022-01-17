@@ -1,40 +1,79 @@
 body {
-    background-image: url("silverhand.jpg");
     background-size: 100%;
     margin: 0px;
     width: 100%;
 }
 
 header {
-    color: white;
+    width: 100%;
+    height: 47px;
+    margin-top: 37px;
+    color: black;
     display: flex;
-    margin-left: 25px;
 }
 
-.header-left {
-    display: flex;
-    font-size: 20px;
+h1 {
+    text-align: center;
+    margin-top: 70px;
+    color: rgb(189, 0, 0);
 }
 
-.header-right {
+.lheader, .mheader, .rheader {
+    width: 33%;
     display: flex;
-    float: right;
+    padding-left: 15px;
+    padding-top: auto;
+    padding-bottom: auto;
+}
+
+.lheader {
+    text-align: right;
+}
+
+.logo {
+    margin:auto;
+    display: block;
+}
+
+.rheader {
+    padding-left: 5%;
 }
 
 .search-bar {
     display: flex;
     margin-left: auto;
     margin-right: auto;
-    height: 60px;
+    margin-top: 60px;
+    height: 90px;
     width: 70%;
     background-color: white;
-    border-radius: 15px;
-    margin-top: auto;
-    margin-bottom: auto;
+    border-style: solid;
+    border-width: 1px;
+    border-color: lightgray;
+    border-radius: 25px;
 }
 
-.downl-img {
-    size: 15%;
+.hglass {
+    margin-left: 15px;
+    margin-top: auto;
+    margin-bottom: auto;
+    height: 40%;
+}
+
+.downl-img-google, .downl-img-apple {
+    width: 160px;
+    height: 47px;
+    border: none;
+    background-size: cover;
+}
+
+.downl-img-google {
+    background-image: url("resources/android.png");
+}
+
+.downl-img-apple {
+    margin-left: 25px;
+    background-image: url("resources/apple.png");
 }
 
 .search-category {
@@ -44,9 +83,10 @@ header {
     width: 9%;
     height: 50px;
     border-width: 1px;
-    border-color: gray;
+    border-color: lightgray;
     background-color: white;
-    margin-top: 5px;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .search-category:hover {
@@ -55,8 +95,8 @@ header {
 }
 
 .vl {
-    border-left: 2px solid gray;
-    height: 60px
+    border-left: 1px solid lightgray;
+    height: 90px
   }
 
 .search {
@@ -70,4 +110,56 @@ header {
     margin-top: 2%;
     margin-left: 2%;
     border: none;
+}
+
+.productions {
+    margin-top: 20px;
+    display: flex;
+    width: 100%;
+    height: 200px;
+}
+
+.gametitle {
+    font-weight: bold;
+}
+
+.submit_game {
+    margin-top: 18%;
+    border-radius: 15px;
+    border: none;
+    width: 80px;
+    height: 40px;
+    background-color: orange;
+}
+
+.Cyberpunk, .FIFA, .Doom, .Skyrim {
+    background-color: gray;
+    height: 100%;
+    width: 33%;
+    margin-left: 3%;
+    margin-right: 3%;
+    border-radius: 12px;
+    border: none;
+    padding-left: 1%;
+}
+
+.Cyberpunk {
+    background-image: url("resources/silverhand.jpg");
+    background-size: cover;
+}
+
+.FIFA {
+    background-image: url("resources/fifa22.jpg");
+    background-size: cover;
+}
+
+.Doom {
+    background-image: url("resources/Doom.jpg");
+    background-size: cover;
+}
+
+.Skyrim {
+    background-image: url("resources/Skyrim.jpg");
+    background-size: cover;
+    color: white;
 }
