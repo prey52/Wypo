@@ -1,27 +1,20 @@
 <?php
     $connect = mysqli_connect('127.0.0.1', 'root', '', 'wypozyczalnia');
-    $test = $_POST['game_name'];
-    $query_game = "select * from gry where id_gry=$test";
-    $sql_game = mysqli_query($connect, $query_game);
-    $game = mysqli_fetch_array($sql_game);
-    //echo $game[0],$game[1],$game[2],$game[3],$game[4]
-    //echo '<img src="data:image/jpeg;base64,'.base64_encode( $row_game[5] ).'"/>';
-    //echo '<img src="data:image/jpeg;base64,'.base64_encode($game[5]).'"/>';
-    //echo "<div class=test style='background-image: url(data:image/jpeg;base64,".base64_encode($game[5]).")'</div>"; //OKURWA DZIAŁA
-    
-    $game_wallpaper = 'data:image/jpeg;base64,'.base64_encode($game[5]);
+    $catch = $_POST['category_name'];
+    $vir_query = mysqli_query($connect, "select * from gry where typ=$catch");
+    //$category = mysqli_fetch_array($vir_query);
 ?>
 <html>
 <head>
     <?php
-        echo "<title>WYPO: $game[1]</title>";
+        //echo "<title>WYPO: $game[1]</title>";
     ?>
         <link rel="stylesheet" href="style.css">
         <link rel="icon" type="image/png" href="resources/favicon.png">
     </head>
     <body>
     <?php
-        echo "<div class=tlo style='background-image: url(data:image/jpeg;base64,".base64_encode($game[5]).")'</div>"; //OKURWA DZIAŁA
+        //echo "<div class=tlo style='background-image: url(data:image/jpeg;base64,".base64_encode($game[5]).")'</div>"; //OKURWA DZIAŁA
     ?>
     <header>
             <div class="lheader">
@@ -50,8 +43,8 @@
         </div>
         <div class="game_info">
         <?php
-            echo "<p class=game_title>$game[1]</p>";
-            echo "<p class=game_desc>$game[4]</p>";
+            if ($catch == "typ") echo "Wszystkie";
+            else echo $catch;
         ?>
         </div>
         </div>
