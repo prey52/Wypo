@@ -3,7 +3,7 @@ $connect = mysqli_connect('127.0.0.1', 'root', '', 'wypozyczalnia');
 ?>
 <html>
     <head>
-        <title>Giereczki</title>
+        <title>Giercownia</title>
         <link rel="stylesheet" href="style.css">
         <link rel="icon" type="image/png" href="resources/favicon.png">
     </head>
@@ -14,7 +14,7 @@ $connect = mysqli_connect('127.0.0.1', 'root', '', 'wypozyczalnia');
                 <p>O nas</p>
             </div>
             <div class="mheader">
-                <img class="logo" src="resources/logo.jpg">
+                <a href="http://localhost:8000/index.php"><img class="logo" src="resources/logo.jpg"></a>
             </div>
             <div class="rheader">
                 <a class="downl-img-google" target="_blank" href="https://play.google.com/"></a>
@@ -36,37 +36,19 @@ $connect = mysqli_connect('127.0.0.1', 'root', '', 'wypozyczalnia');
                         </form>";
                         
                     }
-                    
                 ?>
-            <!--
-                <form method="post" action="szukaj.php" target="blank">
-                <input type="hidden" name="category_name" value="typ">
-                <input type="submit" class="search-category" value="lol">
-            </form>
-
-            <form method="post" class="search-category" action="szukaj.php" target="blank">
-                <input type="hidden" name="category_name" value="Sportowa">
-                <input type="submit" class="search-category" value="fps-PHP">
-            </form>
-            <input type="submit" class="search-category" value="RPG">
-            <input type="submit" class="search-category" value="Wyścigi">
-            <input type="submit" class="search-category" value="Przygodowe">
-            <input type="submit" class="search-category" value="Bijatyki">
-            <input type="submit" class="search-category" value="Sportowe">
--->
             <div class="vl"></div>
         </div>
         <h1>Polecamy</h1>
 <?php
     echo "<div class=productions>";
-    $query_game = "select * from gry";
-    $sql_game = mysqli_query($connect, $query_game);
+    $sql_game = mysqli_query($connect, "SELECT * FROM gry");
     while($row_game = mysqli_fetch_array($sql_game))
     {
-        echo "<div class=$row_game[1]>";
+        echo "<div class=gra style='background-image: url(data:image/jpeg;base64,".base64_encode($row_game[5]).")'";
         echo "<p class=gametitle>$row_game[1]</p>";
         echo "<p>$row_game[2]</p>";
-        echo "<form method=post action=game.php target=_blank>
+        echo "<form method=post action=game.php >
                 <input type=hidden  name=game_name value=$row_game[0]>
                 <input type=submit class=submit_game value=Zamów>
               </form>";

@@ -1,9 +1,8 @@
 <?php
     $connect = mysqli_connect('127.0.0.1', 'root', '', 'wypozyczalnia');
-    $test = $_POST['game_name'];
-    $query_game = "select * from gry where id_gry=$test";
-    $sql_game = mysqli_query($connect, $query_game);
-    $game = mysqli_fetch_array($sql_game);
+    $catch = $_POST['game_name'];
+    $vir_query = mysqli_query($connect, "SELECT * FROM `gry` WHERE id_gry=$catch");
+    $game = mysqli_fetch_array($vir_query);
     //echo $game[0],$game[1],$game[2],$game[3],$game[4]
     //echo '<img src="data:image/jpeg;base64,'.base64_encode( $row_game[5] ).'"/>';
     //echo '<img src="data:image/jpeg;base64,'.base64_encode($game[5]).'"/>';
@@ -14,7 +13,7 @@
 <html>
 <head>
     <?php
-        echo "<title>WYPO: $game[1]</title>";
+        echo "<title>$game[1]</title>";
     ?>
         <link rel="stylesheet" href="style.css">
         <link rel="icon" type="image/png" href="resources/favicon.png">
@@ -28,7 +27,7 @@
                 <p>O nas</p>
             </div>
             <div class="mheader">
-                <img class="logo" src="resources/logo.jpg">
+                <a href="http://localhost:8000/index.php"><img class="logo" src="resources/logo.jpg"></a>
             </div>
             <div class="rheader">
                 <a class="downl-img-google" target="_blank" href="https://play.google.com/"></a>
@@ -39,13 +38,18 @@
             <img class="hglass" src="resources/lupa.jpg">
             <input class="search" type="text" value="Szukaj...">
             <div class="vl"></div>
-            <input type="submit" class="search-category" value="Wszystkie">
-            <input type="submit" class="search-category" value="FPS">
-            <input type="submit" class="search-category" value="RPG">
-            <input type="submit" class="search-category" value="Wyścigi">
-            <input type="submit" class="search-category" value="Przygodowe">
-            <input type="submit" class="search-category" value="Bijatyki">
-            <input type="submit" class="search-category" value="Sportowe">
+            <?php
+                    $tab = array("Wszystkie", "fps", "Sportowa", "RPG", "Wyścigi", "Przygodowe", "Bijatyki");
+                    
+                    $i = 0;
+                    for ($i = 0; $i < count($tab); $i++) {
+                    echo "<form method=post action=szukaj.php>
+                            <input type=hidden  name=category_name value=$tab[$i]>
+                            <input type=submit class=search-category value=$tab[$i]>
+                        </form>";
+                        
+                    }
+                ?>
             <div class="vl"></div>
         </div>
         <div class="game_info">
